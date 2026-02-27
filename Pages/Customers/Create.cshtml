@@ -1,0 +1,93 @@
+@page
+@model CRMProject.Pages.Customers.Create
+@{
+    ViewData["Title"] = "Create Customer";
+}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="mb-4">
+        <h2 class="fw-bold text-primary">Create New Customer</h2>
+        <p class="text-muted">Enter customer details below</p>
+    </div>
+
+    <!-- Error Message -->
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger shadow-sm">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <!-- Success Message -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success shadow-sm">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <!-- Form Card -->
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body p-4">
+
+            <form method="post">
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">
+                        Name *
+                    </label>
+                    <input class="form-control"
+                           asp-for="name"
+                           placeholder="Enter customer name" />
+                    <span asp-validation-for="name"
+                          class="text-danger small"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">
+                        Email *
+                    </label>
+                    <input class="form-control"
+                           asp-for="email"
+                           placeholder="Enter email address" />
+                    <span asp-validation-for="email"
+                          class="text-danger small"></span>
+                </div>
+
+                <!-- Phone -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        Phone *
+                    </label>
+                    <input class="form-control"
+                           asp-for="phone"
+                           placeholder="Enter phone number" />
+                    <span asp-validation-for="phone"
+                          class="text-danger small"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-end gap-2">
+
+                    <a asp-page="/Customers/Index"
+                       class="btn btn-outline-secondary px-4">
+                        Cancel
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-primary px-4">
+                        Create Customer
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
